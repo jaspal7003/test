@@ -1,4 +1,5 @@
 const express = require('express');
+const https = require("https");
 const app = express();
 const cookieParser = require('cookie-parser');
 const PORT = 8080;
@@ -10,7 +11,7 @@ app.get('/get', (req, res) => {
 
 app.get('/set/:key/:value', (req, res) => {
     const {key, value} = req.params;
-    res.cookie(key, value);
+    res.cookie(key, value, {});
     res.redirect('/get');
 })
 
@@ -20,6 +21,8 @@ app.get('/clear/:key', (req, res) => {
     res.redirect('/get')
 })
 
-app.listen(PORT, (err) => {
-    console.log(`Server started at ${PORT}`)
-})
+https
+  .createServer(app)
+  .listen(PORT, ()=>{
+    console.log('server is runing at port 4000')
+  });
