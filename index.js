@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const cookieParser = require('cookie-parser');
 const PORT = 8080;
+app.set('trust proxy', 1)
 app.use(cookieParser())
 
 app.get('/', (req, res) => {
