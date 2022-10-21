@@ -31,6 +31,6 @@ app.get('/clear/:key', (req, res) => {
 })
 const httpServer = http.createServer(app);
 
-  httpServer.listen(process.env.PORT || 5000, ()=>{
+  app.listen(process.env.PORT || 5000, ()=>{
     console.log('server is runing at port 4000')
   });
