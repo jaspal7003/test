@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const https = require('https');
 const cookieParser = require('cookie-parser');
 const PORT = 8080;
 app.use(cookieParser())
@@ -27,7 +28,8 @@ app.get('/clear/:key', (req, res) => {
     res.clearCookie(key)
     res.redirect('/get')
 })
+const httpsServer = https.createServer(app);
 
-  app.listen(process.env.PORT || 5000, ()=>{
+  httpsServer.listen(process.env.PORT || 5000, ()=>{
     console.log('server is runing at port 4000')
   });
