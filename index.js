@@ -5,7 +5,7 @@ const PORT = 8080;
 app.use(cookieParser())
 
 app.get('/', (req, res) => {
-    res.send("<a href="https://jaspal02.herokuapp.com/">Go 2 jaspal02</a>");
+    res.send('<a href="https://jaspal02.herokuapp.com/">Go 2 jaspal02</a>');
 })
 
 app.get('/get', (req, res) => {
