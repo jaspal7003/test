@@ -24,6 +24,6 @@ app.get('/clear/:key', (req, res) => {
     res.redirect('/get')
 })
 
-  app.listen(PORT, ()=>{
+  app.listen(process.env.PORT || 5000, ()=>{
     console.log('server is runing at port 4000')
   });
