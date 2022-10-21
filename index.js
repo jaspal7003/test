@@ -14,7 +14,7 @@ app.get('/get', (req, res) => {
 
 app.get('/set/:key/:value', (req, res) => {
     const {key, value} = req.params;
-    res.cookie(key, value, {});
+    res.cookie(key, value, {sameSite="none", strict: true});
     res.redirect('/get');
 })
 
