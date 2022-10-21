@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.send('<a href="https://jaspal02.herokuapp.com/">Go 2 jaspal02</a>');
 })
 
+app.use((req, res, next)=>{
+    req["sessionCookies"].secure = true;
+    next();
+});
+
 app.get('/get', (req, res) => {
     res.json(req.cookies);
 })
