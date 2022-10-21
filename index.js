@@ -5,7 +5,7 @@ const PORT = 8080;
 app.use(cookieParser())
 
 app.get('/', (req, res) => {
-    res.send("This is the home page");
+    res.send('<a href="https://jaspal02.herokuapp.com/">Go 2 jaspal02</a>');
 })
 
 app.get('/get', (req, res) => {
@@ -14,7 +14,11 @@ app.get('/get', (req, res) => {
 
 app.get('/set/:key/:value', (req, res) => {
     const {key, value} = req.params;
-    res.cookie(key, value, {});
+    try{
+        res.cookie(key, value, {sameSite="none", strict: true});
+    }catch(err) {
+        res.json(err);
+    }
     res.redirect('/get');
 })
 
